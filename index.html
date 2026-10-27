@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Welcome Sofine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Loaded without blocking, so a slow connection never delays the clock; system fonts are the fallback. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;600&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg" id="bgA"></div>
+  <div class="bg" id="bgB"></div>
+  <div class="shade"></div>
+
+  <main class="stage">
+    <header class="top">
+      <div class="bg-picker">
+        <button class="chip" id="prevBg" aria-label="Previous background">&#8249;</button>
+        <span class="bg-name" id="bgName"></span>
+        <button class="chip" id="nextBg" aria-label="Next background">&#8250;</button>
+      </div>
+    </header>
+
+    <section class="hero" id="hero">
+      <p class="greeting" id="greeting">Good evening</p>
+      <h1 class="welcome">Welcome Sofine</h1>
+    </section>
+
+    <section class="bottom">
+      <div class="glass clock-card">
+        <div class="time"><span id="time">--:--</span><span class="ampm" id="ampm"></span></div>
+        <div class="date" id="date"></div>
+      </div>
+
+      <div class="glass weather-card" id="weather">
+        <div class="wx-now">
+          <div class="wx-icon" id="wxIcon"></div>
+          <div>
+            <div class="wx-temp"><span id="wxTemp">--</span><span class="deg">&deg;C</span></div>
+            <div class="wx-label"><span id="wxLabel">Loading weather&hellip;</span> &middot; Johannesburg</div>
+          </div>
+        </div>
+        <div class="wx-days" id="wxDays"></div>
+        <div class="wx-meta" id="wxMeta"></div>
+      </div>
+    </section>
+  </main>
+
+  <p class="credit">Weather data by <span>Open-Meteo.com</span> (CC BY 4.0) &middot; Backgrounds made for this page</p>
+
+<script src="app.js"></script>
+</body>
+</html>

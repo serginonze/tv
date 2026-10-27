@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5f8aa8"/>
+      <stop offset=".45" stop-color="#a9c3d3"/>
+      <stop offset=".62" stop-color="#e9d9c6"/>
+      <stop offset=".66" stop-color="#f3dcc0"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7f9fb2"/>
+      <stop offset=".35" stop-color="#557b93"/>
+      <stop offset="1" stop-color="#2c4a60"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="620" cy="700" r="520" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff6e2" stop-opacity=".95"/>
+      <stop offset=".1" stop-color="#ffe9c8" stop-opacity=".6"/>
+      <stop offset="1" stop-color="#ffe0b8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="glint" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff3dc" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#fff3dc" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <g fill="#fff" opacity=".35">
+    <ellipse cx="300" cy="160" rx="320" ry="16"/><ellipse cx="460" cy="188" rx="220" ry="10"/>
+    <ellipse cx="1400" cy="250" rx="380" ry="14"/><ellipse cx="1560" cy="282" rx="240" ry="9"/>
+  </g>
+  <rect y="712" width="1920" height="368" fill="url(#sea)"/>
+  <rect width="1920" height="1080" fill="url(#sun)"/>
+  <path d="M520 714 L720 714 L860 1080 L380 1080Z" fill="url(#glint)"/>
+  <path d="M1280 712 C 1420 640 1560 600 1700 610 C 1800 618 1880 650 1920 668 V712Z" fill="#53707f"/>
+  <path d="M1460 712 C 1560 676 1700 660 1800 670 C 1860 676 1900 690 1920 696 V712Z" fill="#3f5a6b"/>
+  <g fill="none" stroke="#e6eef2" stroke-linecap="round" opacity=".28">
+    <path d="M120 800 h260" stroke-width="3"/><path d="M980 790 h200" stroke-width="2.5"/><path d="M1400 830 h300" stroke-width="3"/>
+    <path d="M260 900 h340" stroke-width="3.5"/><path d="M1100 930 h280" stroke-width="3.5"/><path d="M60 1010 h420" stroke-width="4"/><path d="M1300 1030 h460" stroke-width="4"/>
+  </g>
+</svg>
