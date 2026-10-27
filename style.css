@@ -89,7 +89,6 @@ body {
 
 .clock-card { padding: 1.4rem 2.2rem 1.6rem; }
 .time { font-size: 5.4rem; font-weight: 200; line-height: 1; letter-spacing: -.02em; }
-.ampm { font-size: 1.5rem; font-weight: 400; margin-left: .6rem; letter-spacing: .06em; opacity: .8; }
 .date { font-size: 1.35rem; margin-top: .7rem; opacity: .85; letter-spacing: .02em; }
 
 .weather-card { min-width: 30rem; }

@@ -35,12 +35,11 @@
     return { h: d.getUTCHours(), m: d.getUTCMinutes(), day: d.getUTCDay(), date: d.getUTCDate(), month: d.getUTCMonth() };
   }
   function pad(n) { return n < 10 ? "0" + n : "" + n; }
-  function hhmm(h, m) { var h12 = h % 12 === 0 ? 12 : h % 12; return h12 + ":" + pad(m); }
+  function hhmm(h, m) { return pad(h) + ":" + pad(m); } // 24-hour
 
   function tickClock() {
     var t = localNow();
     $("time").innerHTML = hhmm(t.h, t.m);
-    $("ampm").innerHTML = t.h < 12 ? "AM" : "PM";
     $("date").innerHTML = DAYS[t.day] + ", " + t.date + " " + MONTHS[t.month];
     $("greeting").innerHTML = t.h < 5 ? "Good night" : t.h < 12 ? "Good morning" : t.h < 17 ? "Good afternoon" : "Good evening";
   }
@@ -127,7 +126,7 @@
     if (!wx) return;
     var age = new Date().getTime() - wx.fetchedAt;
     var t = new Date(wx.fetchedAt + UTC_OFFSET_HOURS * 3600 * 1000);
-    var at = hhmm(t.getUTCHours(), t.getUTCMinutes()) + (t.getUTCHours() < 12 ? " AM" : " PM");
+    var at = hhmm(t.getUTCHours(), t.getUTCMinutes());
     if (age > WEATHER_STALE_MS) { meta.className = "wx-meta stale"; meta.innerHTML = "Offline &middot; last updated " + at; }
     else { meta.className = "wx-meta"; meta.innerHTML = "Updated " + at; }
   }
@@ -176,6 +175,23 @@
     if (!cached || new Date().getTime() - cached.fetchedAt > WEATHER_REFRESH_MS) fetchWeather();
   });
 
+  // ---------- Updates ----------
+  // The TV keeps this page open for days, so check every 30 minutes whether a
+  // newer version was published and reload if so.
+  var loadedVersion = null;
+  function checkVersion() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "version.txt?t=" + new Date().getTime(), true);
+    xhr.timeout = 10000;
+    xhr.onload = function () {
+      if (xhr.status !== 200) return;
+      var v = xhr.responseText.replace(/\s+/g, "");
+      if (loadedVersion === null) loadedVersion = v;
+      else if (v && v !== loadedVersion) window.location.reload();
+    };
+    xhr.send();
+  }
+
   // ---------- Start ----------
   tickClock();
   playWelcome();
@@ -186,4 +202,6 @@
   setInterval(fetchWeather, WEATHER_REFRESH_MS);
   setInterval(function () { updateWeatherMeta(store.get("weather")); }, 60000);
   setInterval(function () { showBackground(bgIndex + 1); }, BG_ROTATE_MS);
+  checkVersion();
+  setInterval(checkVersion, 30 * 60 * 1000);
 })();
